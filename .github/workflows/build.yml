@@ -1,0 +1,13 @@
+name: Build
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    uses: Lepinoid/WorkflowCollections/.github/workflows/build.yml@main
+    with:
+      java_version: 11
+      gradle_args: shadowJar
+    secrets: inherit
