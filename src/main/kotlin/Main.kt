@@ -10,17 +10,17 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.time.Duration.Companion.minutes
 
-const val TOKEN = "BOT_TOKEN"
+const val BOT_TOKEN = "BOT_TOKEN"
 const val JP_CHANNEL = "JP_CHANNEL"
 const val CET_CHANNEL = "CET_CHANNEL"
 
 suspend fun main() {
     val env = System.getenv()
-    check(env.containsKey(TOKEN)) { "env BOT_TOKEN is null" }
+    check(env.containsKey(BOT_TOKEN)) { "env BOT_TOKEN is null" }
     check(env.containsKey(JP_CHANNEL)) { "env JP_CHANNEL is null" }
     check(env.containsKey(CET_CHANNEL)) { "env CET_CHANNEL is null" }
 
-    val kord = Kord(System.getenv(TOKEN))
+    val kord = Kord(System.getenv(BOT_TOKEN))
 //    kord.on<MessageCreateEvent> {
 //        if (message.author?.isBot == true) return@on
 //    }
