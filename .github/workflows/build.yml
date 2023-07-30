@@ -1,13 +1,29 @@
-name: Build
+name: Java CI with Gradle
+
 on:
   push:
-    branches:
-      - main
+    paths-ignore:
+      - "README.md"
+
+permissions:
+  contents: read
 
 jobs:
-  build:
-    uses: Lepinoid/WorkflowCollections/.github/workflows/build.yml@main
-    with:
-      java_version: 11
-      gradle_args: shadowJar
-    secrets: inherit
+  check:
+    runs-on: ubuntu-latest
+    container:
+      image: eclipse-temurin:11-jdk
+      options: --user root
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+        with:
+          arguments: check shadowJar
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Artifacts
+          path: |
+            build/libs/
