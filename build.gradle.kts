@@ -16,6 +16,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
 
+    implementation("ch.qos.logback:logback-classic:1.2.11")
+
     testImplementation(kotlin("test"))
 }
 
